@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Daily Stock Analysis · 智能决策仪表盘</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-icon">📈</span>
+        <div>
+          <p class="brand-title">Daily Stock</p>
+          <p class="brand-subtitle">智能决策仪表盘</p>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item is-active">分析面板</button>
+        <button class="nav-item">市场概览</button>
+        <button class="nav-item">策略管理</button>
+        <button class="nav-item">通知渠道</button>
+      </nav>
+
+      <div class="sidebar-card">
+        <h4>部署提示</h4>
+        <p>将界面部署到 Vercel 后，在 <code>frontend/config.js</code> 中配置后端 API 地址。</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">实时监控 · A/H/美股</p>
+          <h1>智能股票分析中枢</h1>
+        </div>
+        <button class="primary-btn" id="refresh_tasks">刷新任务</button>
+      </header>
+
+      <section class="metrics">
+        <div class="metric-card">
+          <p>今日任务</p>
+          <h3 id="metric_tasks">0</h3>
+          <span class="metric-note">最近 24 小时</span>
+        </div>
+        <div class="metric-card">
+          <p>运行中</p>
+          <h3 id="metric_running">0</h3>
+          <span class="metric-note">平均耗时 2-4 分钟</span>
+        </div>
+        <div class="metric-card">
+          <p>完成率</p>
+          <h3 id="metric_success">0%</h3>
+          <span class="metric-note">成功 / 总任务</span>
+        </div>
+      </section>
+
+      <section class="panel-grid">
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <h2>快速分析</h2>
+              <p>输入股票代码，立即生成 AI 决策报告。</p>
+            </div>
+            <span class="badge">即刻可用</span>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-field">
+              <label>股票代码</label>
+              <input id="analysis_code" type="text" placeholder="A股 600519 / 港股 hk00700 / 美股 AAPL" />
+            </div>
+            <div class="form-field">
+              <label>报告类型</label>
+              <select id="report_type">
+                <option value="simple">📝 精简报告</option>
+                <option value="full">📊 完整报告</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="primary-btn" id="analysis_btn" disabled>开始分析</button>
+          <p class="helper-text">API 地址读取自 <code>frontend/config.js</code> · 支持格式：A股 6 位数字 / 港股 hk+5 位 / 美股代码 (字母)</p>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <h2>分析任务看板</h2>
+              <p>实时追踪每一次分析的状态与结论。</p>
+            </div>
+            <span class="badge secondary">实时更新</span>
+          </div>
+          <div class="task-list" id="task_list"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -173,6 +173,26 @@
 - 🚀 **快速分析** - 页面输入股票代码，一键触发分析
 - 📊 **实时进度** - 分析任务状态实时更新，支持多任务并行
 
+## 🌐 Vercel 可视化界面（静态前端）
+
+为了更专业的视觉呈现，仓库内提供了一个独立的静态前端（`/frontend`），适合直接部署到 Vercel。该页面会调用你已有的分析服务 API（`/analysis`、`/task`、`/tasks`）。
+
+### 部署步骤
+
+1. 在 Vercel 新建项目并选择当前仓库。
+2. 根目录会自动识别 `vercel.json`，构建为静态站点。
+3. 部署完成后，在 `frontend/config.js` 中配置 `apiBase`（如 `https://your-api.example.com`）。
+
+### 本地预览
+
+```bash
+cd frontend
+cp config.example.js config.js
+python -m http.server 4173
+```
+
+浏览器访问：`http://127.0.0.1:4173`
+
 ### API 接口
 
 | 接口 | 方法 | 说明 |
